@@ -1,0 +1,26 @@
+.user-account {
+  display: flex;
+  flex-wrap: wrap;
+
+  max-width: 800px;
+  margin: auto;
+
+  padding: 1.5rem 0;
+
+  .user-account__avatar {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+
+  & > .col {
+    flex: 1 0 calc(50% - 15px);
+    padding: 0 7.5px;
+  }
+}

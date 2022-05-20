@@ -1,0 +1,13 @@
+version: "3"
+services:
+  mongodb:
+    platform: linux/amd64
+    image: mongo:5.0
+    environment:
+      # unauthenticate
+      MONGO_INITDB_ROOT_USERNAME: # empty value
+      MONGO_INITDB_ROOT_PASSWORD: # empty value
+    ports:
+      - 27018:27017
+    volumes:
+      - ./mongodb/data:/data/db

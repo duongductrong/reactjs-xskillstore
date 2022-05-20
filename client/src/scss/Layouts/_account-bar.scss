@@ -1,0 +1,36 @@
+.account-bar {
+  background-color: #007bff !important;
+  padding: 6px 16px;
+  font-size: 12px;
+  display: flex;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: calc(100% - 32px);
+
+  z-index: 10;
+
+  &__options {
+    list-style-type: none;
+    margin: 0 0 0 auto;
+
+    &__element {
+      display: inline-block;
+      margin-right: 14px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+
+        svg {
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+}

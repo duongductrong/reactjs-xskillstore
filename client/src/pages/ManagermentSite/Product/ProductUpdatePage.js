@@ -234,7 +234,7 @@ class ProductUpdatePage extends React.Component {
                         dropPrice: product.dropPrice,
                         vendor: product.vendor,
                         guarantee: product.guarantee,
-                        infomation_production: this.onEditorInfoProductStateChange(Module.HtmlToEditor(product.infomation_production)),
+                        infomation_production: this.onEditorInfoProductStateChange(Module.HtmlToEditor((product.infomation_production || ""))),
                         description: this.onEditorDescriptionStateChange(Module.HtmlToEditor(product.description)),
                         thumbnails: product.thumbnails,
                         images_detail: product.images_detail,

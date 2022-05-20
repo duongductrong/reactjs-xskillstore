@@ -25,8 +25,8 @@ function HomePageCategory(props) {
             style={{height: "250px"}} 
             url={`/product-list/gender=${0}`}
             title="GIÀY NAM" 
-            // image="https://ananas.vn/wp-content/uploads/catalogy-1.jpg"
-            image={ThumbnailIMG}
+            image="https://ananas.vn/wp-content/uploads/catalogy-1.jpg"
+            // image={ThumbnailIMG}
             // categories={[
             //     {url: "/", name: "New Arrivals"},
             //     {url: "/", name: "Best Seller"},
@@ -37,7 +37,8 @@ function HomePageCategory(props) {
             style={{height: "250px"}}
             url={`/product-list`}
             title="Danh Mục" 
-            image={ThumbnailIMG}
+            image="https://ananas.vn/wp-content/uploads/banner-phu%CC%A3_2m-600x320.jpg"
+            // image={ThumbnailIMG}
             // categories={[
             //     {url: "/", name: "Basas"},
             //     {url: "/", name: "Vintas"},
@@ -49,8 +50,8 @@ function HomePageCategory(props) {
             style={{height: "250px"}}
             url={`/product-list/gender=${1}`}
             title="GIÀY Nữ" 
-            // image="https://ananas.vn/wp-content/uploads/catalogy-2.jpg"
-            image={ThumbnailIMG}
+            image="https://ananas.vn/wp-content/uploads/catalogy-2.jpg"
+            // image={ThumbnailIMG}
             // categories={[
             //     {url: "/", name: "New Arrivals"},
             //     {url: "/", name: "Best Seller"},
@@ -85,23 +86,16 @@ class HomePage extends React.Component {
         this.banner_carousel = [
             {
                 url: "/", 
-                image: ThumbnailIMG,
-                title: "Lorem Ipsum is simply dummy text",
-                paragraph: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+                image: "https://ananas.vn/wp-content/uploads/catalogy-3.jpg",
+                title: "Bình mới 'rượu mới'",
+                paragraph: "Mẫu hiệu mới nhận diện mới mang tới nhiều trải nghiệm mới"
             },
             {
                 url: "/", 
-                image: ThumbnailIMG,
-                title: "Lorem Ipsum is simply dummy text",
-                paragraph: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+                image: "https://ananas.vn/wp-content/uploads/Banner_Sale-off-1.jpg",
+                title: "Giày mới phong cách mới cho bạn",
+                paragraph: "Phong cách mang tới sự trẻ trung năng động !!"
             },
-            {
-                url: "/", 
-                image: ThumbnailIMG,
-                title: "Lorem Ipsum is simply dummy text",
-                paragraph: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-            
-            }
         ]
 
         this.onScroll = this.onScroll.bind(this);

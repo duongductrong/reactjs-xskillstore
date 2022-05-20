@@ -19,6 +19,7 @@
 @import './Layouts/footer';
 @import './Layouts/management';
 @import './Layouts/managementMenu';
+@import './Layouts/account-bar';
 
 @import './Components/notification-carousel';
 @import './Components/carousel';
@@ -69,6 +70,7 @@
 @import './Pages/error404';
 @import './Pages/maintenancepage';
 @import './Pages/findorderspage';
+@import './Pages/user-account';
 @import './Pages/ManagementPage/homeManagementPage';
 @import './Pages/ManagementPage/Product/managementProductPage';
 @import './Pages/ManagementPage/Tag/managementTagPage';

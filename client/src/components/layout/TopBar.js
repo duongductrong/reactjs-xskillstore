@@ -51,15 +51,23 @@ function NavTopBar(props) {
 }
 
 class TopBar extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+
+        const { isAuth } = this.props;
+
         return (
             <Context.Consumer>
                 {({stateCartAmount}) => (
                     <div className="topbar">
                         <NavTopBar path="/find-orders" icon={faBoxOpen} name="Tra cứu đơn hàng" />
-                        <NavTopBar path="/management-site" icon={faMapMarked} name="Tìm cửa hàng" />
+                        {/* <NavTopBar path="/management-site" icon={faMapMarked} name="Tìm cửa hàng" /> */}
                         <NavTopBar path="#" icon={faHeart} name="Yêu thích" />
-                        <NavTopBar path="/login" icon={faUser} name="Đăng nhập" />
+                        { !isAuth ? <NavTopBar path="/login" icon={faUser} name="Đăng nhập" /> : null }
                         <NavTopBar path="/payment" image={CartShop} name={`Giỏ hàng (${stateCartAmount})`} />
                     </div>
                 )}

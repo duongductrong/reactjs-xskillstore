@@ -11,7 +11,7 @@ const app = express();
 dotenv.config();
 
 //MongoDB
-mongoose.connect(process.env.DTB_PRIVATE, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DTB_TEST, {useNewUrlParser: true, useUnifiedTopology: true});
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
