@@ -1,4 +1,7 @@
 version: "3"
+
+networks:
+  bride:
 services:
   mongodb:
     platform: linux/amd64
@@ -10,7 +13,30 @@ services:
     ports:
       - 27018:27017
     volumes:
-      - ./mongodb/data:/data/db
+      - ./storage/mongodb/data:/data/db
+    networks:
+      - bride
   backend:
     platform: linux/amd64
-    
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    command: npm start
+    networks:
+      - bride
+    depends_on:
+      - mongodb
+  frontend:
+    platform: linux/amd64
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    command: npm start
+    networks:
+      - bride
+    depends_on:
+      - backend

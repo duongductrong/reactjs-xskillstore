@@ -20,7 +20,7 @@ class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <AccountBar />
+        {isLoggedIn && <AccountBar />}
         <TopBar isAuth={isLoggedIn} />
         <Menu />
         <NotificationCarousel content={this.carousel_notice_content} />

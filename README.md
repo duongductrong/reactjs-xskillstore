@@ -1,5 +1,7 @@
 # reactjs-xskillstore
 
+
+
 #Built by Front end [Reactjs], Backend [Nodejs-Expressjs], Database [Mongodb]
 
 #Tutorial using my project
@@ -19,7 +21,7 @@
 
 >	Created by Dương Đức Trọng
 
->	Github: https://github.com/trong06
+>	Github: https://github.com/duongductrong
 
 >	Codepen: https://codepen.io/CodeEN
 
