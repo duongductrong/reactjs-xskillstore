@@ -122,9 +122,24 @@ module.exports.checkCreate = async (req, res, next) => {
     let { userLogin } = res.locals;
     let product, checkTags, checkPromotion;
     let errors = {};
-    let { title, url, tags, thumbnails, images_detail, price, dropPrice, rate, description, vendor, promotion
-    , infomation_production, guarantee, status, size, gender, author } = req.body;
-
+    let { 
+        title = "", 
+        url = "", 
+        tags = [], 
+        thumbnails = [], 
+        images_detail = [], 
+        price = "", 
+        dropPrice = "", 
+        rate = "", 
+        description = "", 
+        vendor = "", 
+        promotion = "", 
+        information_production = "", 
+        guarantee = "",
+        status = "", 
+        size = [], 
+        gender = "", 
+        author = "" } = req.body;
     //First setting
     !Array.isArray(thumbnails) && !Checking.isNull(thumbnails) ? thumbnails = [thumbnails] : thumbnails = thumbnails;
     !Array.isArray(tags) && !Checking.isNull(tags) ? tags = [tags] : tags = tags;
@@ -186,6 +201,7 @@ module.exports.checkCreate = async (req, res, next) => {
             errors.thumbnails = Notification.message("Client xử lý lỗi, thumbnails gửi lên phải là một Array", "error", 400);
         }
     }
+
     //Check images detail
     if(Checking.isNull(images_detail) || images_detail.length <= 0) {
         errors.images_detail = Notification.message("Ảnh chi tiết của sản phẩm không được để trống", "error", 404);
@@ -257,9 +273,8 @@ module.exports.checkCreate = async (req, res, next) => {
     }
 
     !Checking.isNull(status) ? status = status : status = true;
-    Checking.isNull(infomation_production) ? infomation_production = "" : infomation_production = infomation_production;
+    Checking.isNull(information_production) ? information_production = "" : information_production = information_production;
     Checking.isNull(guarantee) ? guarantee = "" : guarantee = guarantee;
-    
     //Set author
     author = userLogin._id;
 
@@ -280,7 +295,7 @@ module.exports.checkCreate = async (req, res, next) => {
         description: description,
         vendor: vendor,
         promotion: promotion,
-        infomation_production: infomation_production,
+        information_production: information_production,
         guarantee: guarantee,
         status: status,
         size: size,
@@ -295,7 +310,7 @@ module.exports.checkPut = async (req, res, next) => {
     let product, checkTags, checkPromotion;
     let errors = {};
     let { title, url, tags, thumbnails, images_detail, price, dropPrice, rate, description, vendor, promotion
-    , infomation_production, guarantee, status, size, gender } = req.body;
+    , information_production, guarantee, status, size, gender } = req.body;
 
     //1. Checking product have exists, if it's not, then return;
     //2. Checking permission : if it's admin, then passed, else, checking;
@@ -355,7 +370,9 @@ module.exports.checkPut = async (req, res, next) => {
         }
     }
 
-    //Check thumbnails
+    //@Check thumbnails
+    //@Temp remove else if conditions validate thumbnails
+    //@Validate from cloudinary about image
     if(Checking.isNull(thumbnails) || thumbnails.length <= 0) {
         errors.thumbnails = Notification.message("Ảnh Thumbnail sản phẩm không được để trống", "error", 400);
     }
@@ -376,7 +393,10 @@ module.exports.checkPut = async (req, res, next) => {
             errors.thumbnails = Notification.message("Client xử lý lỗi, thumbnails gửi lên phải là một Array", "error", 400);
         }
     }
-    //Check images detail
+
+    //@Check images detail
+    //@Temp remove else if conditions validate image detail
+    //@Validate from cloudinary about image
     if(Checking.isNull(images_detail) || images_detail.length <= 0) {
         errors.images_detail = Notification.message("Ảnh chi tiết của sản phẩm không được để trống", "error", 404);
     }
@@ -385,6 +405,7 @@ module.exports.checkPut = async (req, res, next) => {
             errors.images_detail = Notification.message("Tồn tại FILE ảnh chi tiết sản phẩm không thuộc đuôi ảnh .PNG, .JPG, .GIF", "error", 400);
         }
     }
+    
     //Check price
     if(Checking.isNull(price)) {
         errors.price = Notification.message("Giá tiền sản phẩm không được để trống", "error", 404);
@@ -450,9 +471,8 @@ module.exports.checkPut = async (req, res, next) => {
     }
 
     !Checking.isNull(status) && product.data.status !== status ? status = status : status = product.data.status;
-    Checking.isNull(infomation_production) ? infomation_production = "" : infomation_production = infomation_production;
+    Checking.isNull(information_production) ? information_production = "" : information_production = information_production;
     Checking.isNull(guarantee) ? guarantee = "" : guarantee = guarantee;
-
     if(Checking.testError(errors)) {
         res.json(Notification.message("Có lỗi xảy ra", "error", 400, { errors: errors }));
         return;
@@ -471,7 +491,7 @@ module.exports.checkPut = async (req, res, next) => {
         description: description,
         vendor: vendor,
         promotion: promotion,
-        infomation_production: infomation_production,
+        information_production: information_production,
         guarantee: guarantee,
         status: status,
         size: size,

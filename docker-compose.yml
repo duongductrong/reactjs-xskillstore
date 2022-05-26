@@ -11,3 +11,6 @@ services:
       - 27018:27017
     volumes:
       - ./mongodb/data:/data/db
+  backend:
+    platform: linux/amd64
+    

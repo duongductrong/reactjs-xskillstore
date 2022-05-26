@@ -68,7 +68,7 @@ module.exports.login = (req, res) => {
                 res.json(Notification.message("Không tạo được token, có lỗi xảy ra", "error", 400));
             }
             else {
-                res.json(Notification.message("Đăng nhập thành công", "ok", 200, { token: token }))
+                res.json(Notification.message("Đăng nhập thành công", "ok", 200, { token: token, userId: user._id }))
             }
         }
     )

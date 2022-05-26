@@ -14,7 +14,7 @@ const productSchema = new Schema({
     vendor: { type: String, required: true }, //Nhà sản xuất sản phẩm
     created: { type: Date, required: true, default: Date.now() }, //Ngày xuất sản phẩm
     promotion: { type: String, required: false }, //Thông tin khuyến mãi
-    infomation_production: { type: String, required: false }, //Thông tin sản phẩm
+    information_production: { type: String, required: false }, //Thông tin sản phẩm
     guarantee: { type: String, required: false }, //Thông tin bảo hành
     status: { type: Boolean, required: true, default: true }, //Trạng thái sản phẩm còn hoặc hết
     size: [ { type: Number || String, required: true } ], //Kích cở sảnf phẩm

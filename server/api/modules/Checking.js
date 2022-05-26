@@ -14,6 +14,16 @@ module.exports.isNull = (key) => {
     }
     return false
 }
+
+module.exports.isObjEmpty = (obj) => {
+    for(let e in obj) {
+        if(obj.hasOwnProperty(e)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 /* For user
     + isPassword, isEmail, isNumberPhone, permiss
 */
@@ -93,7 +103,8 @@ module.exports.permiss = (permission, userPosition) => {
 //Kiểm tra đường dẫn hình ảnh
 module.exports.isImage = (image) => {
     /* checking with jpg or png */
-    return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g.test(image);
+    // return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g.test(image);
+    return true;
 }
 module.exports.isImages = (images) => {
     let i, length;
