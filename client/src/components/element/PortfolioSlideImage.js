@@ -53,10 +53,20 @@ class PortfolioSlideImage extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if(this.props.image !== prevProps.image) {
+            console.log("execute");
+            this.setState({
+                ...this.state,
+                image: this.props.image,
+            })
+        }
+    }
+
     render() {
         const { title, shows, images } = this.props;
         let countItems = []
-        this.onCountDisplayE(countItems, shows)
+        this.onCountDisplayE(countItems, shows);
         return (
             <>
             {/* <img className="portfolioSlide__images" src={Array.isArray(images) ? images[this.state.item] : images[this.state.item]} /> */}

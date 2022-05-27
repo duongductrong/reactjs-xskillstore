@@ -43,6 +43,7 @@ import MaintenancePage from './pages/MaintenancePage';
 import FindOrdersPage from './pages/FindOrdersPage';
 import UserAccount from './pages/UserAccount';
 import { AuthProvider } from './hooks/useAuth';
+import About from './pages/About';
 
 class App extends React.Component {
   constructor(props) {
@@ -79,6 +80,7 @@ class App extends React.Component {
             <Router>
               <Switch>
                 <Route path="/" exact component={HomePage} />
+                <Route path="/about-us" exact component={About} />
                 <Route path="/product-list" component={ProductListPage} />
                 <Route path="/product/:id" component={ProductPage} />
                 <Route path="/article/:id" component={ArticlePage} />

@@ -10,12 +10,13 @@
   .user-account__avatar {
     text-align: center;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     img {
       width: 100px;
       height: 100px;
       object-fit: cover;
+      border-radius: 50%;
     }
   }
 

@@ -4,6 +4,8 @@ import Store from "../components/layout/Common/Store";
 import LayoutMedium from "../components/layout/LayoutMedium";
 import useAuth from "../hooks/useAuth";
 
+import AvatarResource from '../images/avatar.jpeg';
+
 function UserAccount() {
   const { auth } = useAuth();
 
@@ -13,7 +15,7 @@ function UserAccount() {
         <div className="user-account">
           <div className="user-account__avatar">
             <img
-              src="https://assets.webiconspng.com/uploads/2016/12/User-Icon.png"
+              src={AvatarResource}
               alt="avatar"
             />
           </div>

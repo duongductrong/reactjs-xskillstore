@@ -176,8 +176,8 @@ class Menu extends React.Component {
                             <div className="submenu__choose">
                                 <SubMenuChoose image={MenuNam} url="/product-list?gender=0">Cho Nam</SubMenuChoose>
                                 <SubMenuChoose image={MenuNu} url="/product-list?gender=1">Cho Nữ</SubMenuChoose>
-                                <SubMenuChoose image={MenuPK} url="/">Outlet Sale</SubMenuChoose>
-                                <SubMenuChoose image={MenuSale} url="/">Cho Sale</SubMenuChoose>
+                                {/* <SubMenuChoose image={MenuPK} url="/">Outlet Sale</SubMenuChoose>
+                                <SubMenuChoose image={MenuSale} url="/">Cho Sale</SubMenuChoose> */}
                             </div>
                         </div>
                     </div>
@@ -207,8 +207,8 @@ class Menu extends React.Component {
                             listItems_3={this.menu.nu.listItems_3} />
                         </div>
                     </div>
-                    <NavLink className="menu__nav__link" to="/maintenance">
-                        SALE OFF
+                    <NavLink className="menu__nav__link" to="/about-us">
+                        Về chúng tôi
                     </NavLink>
                     <NavLink className="menu__nav__link" to="/maintenance">
                         <img className="mav__nav__link__image" src={DisCoverYou} />

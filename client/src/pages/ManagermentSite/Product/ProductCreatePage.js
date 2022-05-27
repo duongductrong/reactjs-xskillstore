@@ -37,7 +37,7 @@ class ProductCreatePage extends React.Component {
             price: "",
             dropPrice: "",
             description: "",
-            infomation_production: "",
+            information_production: "",
             guarantee: "",
             size: [],
             gender: "",
@@ -86,7 +86,7 @@ class ProductCreatePage extends React.Component {
     onEditorInfoProductStateChange(editorState) {
         this.setState({
             editorInfoProductState: editorState,
-            infomation_production: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+            information_production: draftToHtml(convertToRaw(editorState.getCurrentContent()))
         })
     }
 

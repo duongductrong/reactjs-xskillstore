@@ -1,0 +1,32 @@
+.about-page {
+	padding: 60px 0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+
+	&__avatar {
+		margin-right: 15px;
+
+		img {
+			width: 300px;
+			height: 300px;
+			object-fit: cover;
+			border-radius: 8px;
+		}
+	}
+
+	&__content {
+		margin-left: 15px;
+
+		.about-page__title {
+		}
+
+		a, span.highlight {
+			color: $orange;
+			text-decoration: none;
+			font-weight: bold;
+			margin-left: 8px;
+			display: inline-block;
+		}
+	}
+}

@@ -32,7 +32,7 @@ class ProductUpdatePage extends React.Component {
             price: "",
             dropPrice: "",
             description: "",
-            infomation_production: "",
+            information_production: "",
             guarantee: "",
             size: [],
             gender: "",
@@ -72,7 +72,7 @@ class ProductUpdatePage extends React.Component {
     onEditorInfoProductStateChange(editorState) {
         this.setState({
             editorInfoProductState: editorState,
-            infomation_production: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+            information_production: draftToHtml(convertToRaw(editorState.getCurrentContent()))
         })
     }
 
@@ -232,7 +232,7 @@ class ProductUpdatePage extends React.Component {
                         dropPrice: product.dropPrice,
                         vendor: product.vendor,
                         guarantee: product.guarantee,
-                        infomation_production: this.onEditorInfoProductStateChange(Module.HtmlToEditor((product.infomation_production || ""))),
+                        information_production: this.onEditorInfoProductStateChange(Module.HtmlToEditor((product.information_production || ""))),
                         description: this.onEditorDescriptionStateChange(Module.HtmlToEditor(product.description)),
                         thumbnails: product.thumbnails,
                         images_detail: product.images_detail,
