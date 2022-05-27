@@ -13,6 +13,8 @@ import Module from '../../../modules/Module';
 import Axios from 'axios';
 import SuccessText from '../../../components/element/Text/SuccessText';
 import LoadingStore from '../../../components/element/Loading/LoadingStore';
+import productsConstant from './constants/productsConstant';
+import Select from 'react-select';
 
 // let optionsTags = [
 //     {label: "One", value: 1},
@@ -52,7 +54,9 @@ class ProductCreatePage extends React.Component {
                 images_detail: "",
             },
             loading: false,
-            created: false
+            created: false,
+
+            sizeOptions: productsConstant.sizes,
         }
 
         this.date = new Date();
@@ -115,9 +119,9 @@ class ProductCreatePage extends React.Component {
         }
     }
 
-    onSizeStateChange(event) {
+    onSizeStateChange(values) {
         this.setState({
-            size: event.target.value
+            size: values,
         })
     }
 
@@ -163,7 +167,7 @@ class ProductCreatePage extends React.Component {
             tags: this.state.tags,
             price: this.state.price,
             dropPrice: this.state.dropPrice,
-            size: this.state.size.length > 0 ? this.state.size.split(",") : [],
+            size: this.state.size.length ? this.state.size.map(({value}) => value) : [],
             gender: this.state.gender,
             vendor: this.state.vendor
         }
@@ -226,7 +230,8 @@ class ProductCreatePage extends React.Component {
     }
 
     render() {
-        const { loading } = this.state;
+        const { loading, sizeOptions, size } = this.state;
+        
         return (
             <Management>
                 {
@@ -275,7 +280,8 @@ class ProductCreatePage extends React.Component {
                             <div>
                                 {/* Kích cở */}
                                 <Box title="Kích cở" errorText={this.state.errors && this.state.errors.size ? this.state.errors.size.msgVi : "" } margin="15px 5px">
-                                    <Input onChange={this.onSizeStateChange} value={this.state.size} type="text" placeholder="Nhập kích cở, mỗi kích cở cách nhau bởi dấu ," square/>
+                                    {/* <Input onChange={this.onSizeStateChange} value={this.state.size} type="text" placeholder="Nhập kích cở, mỗi kích cở cách nhau bởi dấu ," square/> */}
+                                    <Select options={sizeOptions} value={size} onChange={this.onSizeStateChange} isMulti />
                                 </Box>
                             </div>
                             <div>

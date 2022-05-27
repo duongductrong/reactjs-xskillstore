@@ -179,7 +179,7 @@ class ManageProductPage extends React.Component {
                                         this.state.products.map((product,index) => (
                                             <tr key={`${index}_tbproduct`}>
                                                 <td> <NavLink to={`${window.location.pathname}/edit/${product.url}`}> { product.title } </NavLink> </td>
-                                                <td> asdsad </td>
+                                                <td> {product.tags.length ? product.tags.map(_tag => _tag.name).join(", ") : null } </td>
                                                 <td> { product.price } </td>
                                                 <td> { product.size.join(",") } </td>
                                                 <td> { product.gender === 0 ? "Nam" : "Nữ" } </td>

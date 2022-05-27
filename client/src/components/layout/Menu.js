@@ -16,18 +16,16 @@ import CancelMenu from '../../images/cancel.svg'
 function SubMenuChoose(props) {
     const { image, children, url } = props;
     return (
-        <div className="submenu__choose__option">
+        <NavLink className="submenu__choose__option" to={url}>
             <img 
             className="submenu__choose__option__image" 
             src={image}/>
             <h3 className="submenu__choose__option__title">
-                <NavLink className="submenu__choose__option__title__child" to={url}>
-                    {
-                        children
-                    }
-                </NavLink>
+                <span className="submenu__choose__option__title__child">
+                    {children}
+                </span>
             </h3>
-        </div>
+        </NavLink>
     )
 }
 
@@ -176,10 +174,10 @@ class Menu extends React.Component {
                         <FontAwesomeIcon className="menu__nav__link__icon" icon={faChevronDown} />
                         <div className="submenu">
                             <div className="submenu__choose">
-                                <SubMenuChoose image={ThumbnailIMG} url="/product-list?gender=0">Cho Nam</SubMenuChoose>
-                                <SubMenuChoose image={ThumbnailIMG} url="/product-list?gender=1">Cho Nữ</SubMenuChoose>
-                                <SubMenuChoose image={ThumbnailIMG} url="/">Outlet Sale</SubMenuChoose>
-                                <SubMenuChoose image={ThumbnailIMG} url="/">Cho Sale</SubMenuChoose>
+                                <SubMenuChoose image={MenuNam} url="/product-list?gender=0">Cho Nam</SubMenuChoose>
+                                <SubMenuChoose image={MenuNu} url="/product-list?gender=1">Cho Nữ</SubMenuChoose>
+                                <SubMenuChoose image={MenuPK} url="/">Outlet Sale</SubMenuChoose>
+                                <SubMenuChoose image={MenuSale} url="/">Cho Sale</SubMenuChoose>
                             </div>
                         </div>
                     </div>

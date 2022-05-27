@@ -74,6 +74,9 @@ class LoginPage extends React.Component {
             // document.cookie = `token=${data.token};expiry=${SetTimeForCookie(60)}`;
             // localStorage.setItem("access_token", data.token);
             window.localStorage.setItem("access_token", data.token);
+
+            // from -> AuthProvider
+            this.props.fetch({ headers: { Authorization: `Bearer ${data.token}` } });
           }
         })
         .catch((err) => {

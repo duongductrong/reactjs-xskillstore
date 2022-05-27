@@ -28,11 +28,11 @@ export const AuthProvider = ({ children }) => {
 
   const { isLoggedIn, userInfo } = state;
 
-  const getUser = () => {
+  const getUser = (_config = { ...config } ) => {
     Axios({
       method: "GET",
       url: `${process.env.REACT_APP_API_ENDPOINT}/api/logined`,
-      ...config,
+      ..._config,
     }).then((response) => {
       const { data } = response;
       const { code, info } = data;
@@ -44,23 +44,29 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const logout = () => {
+    window.localStorage.removeItem("access_token");
+  }
+
   useEffect(() => {
     getUser();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ userInfo, isLoggedIn, getUser }}>
+    <AuthContext.Provider value={{ userInfo, isLoggedIn, getUser, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 function useAuth() {
-  const { userInfo, isLoggedIn } = useContext(AuthContext);
+  const { userInfo, isLoggedIn, getUser, logout } = useContext(AuthContext);
 
   return {
     auth: userInfo,
     isLoggedIn,
+    logout,
+    fetch: getUser,
   };
 }
 

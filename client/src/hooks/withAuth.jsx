@@ -6,10 +6,12 @@ function withLoggedIn(WrappedElement, props) {
     render() {
       return (
         <AuthContext.Consumer>
-          {({ isLoggedIn, userInfo }) => (
+          {({ isLoggedIn, userInfo, getUser, logout }) => (
             <WrappedElement
               isLoggedIn={isLoggedIn}
               auth={userInfo}
+              fetch={getUser}
+              logout={logout}
               {...props}
             />
           )}

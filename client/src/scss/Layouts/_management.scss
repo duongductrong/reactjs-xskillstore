@@ -1,13 +1,21 @@
 .management {
-    @include Grid;
+    $sidebarWidth: 200px;
+
+    // @include Grid;
     // @include FontNunito;
-    grid-template-columns: 250px 5fr;
+    // grid-template-columns: 250px 5fr;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
     &__side {
         background: $violet;
         padding: 10px 15px;
-        height: 100vh;
+        min-height: 100vh;
         z-index: 100;
+        width: $sidebarWidth;
+        position: fixed;
+        top: 0;
+        left: 0;
+
         &__logo {
             color: $light;
         }
@@ -21,10 +29,10 @@
         }
     }
     &__main {
-        background-color: $grey-custom-2;
+        margin-left: $sidebarWidth + 25px;
+        
         &__app {
             padding: 15px;
-            // position: relative;
         }
     }
     &--active {

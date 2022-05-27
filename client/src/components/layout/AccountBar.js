@@ -1,9 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 function AccountBar() {
-  const { auth } = useAuth();
+  const history = useHistory();
+  const { auth, logout } = useAuth();
+
+  const onLogout = () => {
+    logout();
+
+    history.push("/login");
+  }
 
   return (
     <div className="account-bar">
@@ -57,7 +64,7 @@ function AccountBar() {
         )}
 
         <li class="account-bar__options__element">
-          <NavLink to={"/"}>
+          <NavLink to={"/login"} onClick={onLogout}>
             <svg
               aria-hidden="true"
               focusable="false"

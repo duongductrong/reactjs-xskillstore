@@ -14,12 +14,8 @@ import Axios from 'axios';
 import SuccessText from '../../../components/element/Text/SuccessText';
 import LoadingCircle from '../../../components/element/Loading/LoadingCircle';
 import LoadingStore from '../../../components/element/Loading/LoadingStore';
-
-// let optionsTags = [
-//     {label: "One", value: 1},
-//     {label: "Two", value: 2},
-//     {label: "Three", value: 3},
-// ];
+import Select from 'react-select';
+import productsConstant from './constants/productsConstant';
 
 class ProductUpdatePage extends React.Component {
     constructor(props) {
@@ -44,7 +40,9 @@ class ProductUpdatePage extends React.Component {
             errors: {},
             loading: false,
             updated: false,
-            got: true
+            got: true,
+
+            sizeOptions: productsConstant.sizes,
         }
         this.date = new Date();
         this.URL_PRODUCT = this.props.match.params.id;
@@ -107,9 +105,9 @@ class ProductUpdatePage extends React.Component {
         }
     }
 
-    onSizeStateChange(event) {
+    onSizeStateChange(values = []) {
         this.setState({
-            size: event.target.value
+            size: [...values]
         })
     }
 
@@ -155,7 +153,7 @@ class ProductUpdatePage extends React.Component {
             tags: this.state.tags,
             price: this.state.price,
             dropPrice: this.state.dropPrice,
-            size: !Array.isArray(this.state.size) && this.state.size.length > 0 ? this.state.size.split(",") : [],
+            size: Array.isArray(this.state.size) ? this.state.size.map(({ value }) => value) : [],
             gender: this.state.gender,
             vendor: this.state.vendor
         }
@@ -228,7 +226,7 @@ class ProductUpdatePage extends React.Component {
                         title: product.title,
                         url: product.url,
                         tags: product.tags.map(tag => JSON.parse(tag) !== null ? JSON.parse(tag)._id : JSON.parse(tag)),
-                        size: product.size.join(","),
+                        size: product.size.map((_size) => ({ label: _size.toString(), value: _size, })),
                         gender: product.gender,
                         price: product.price.toString(),
                         dropPrice: product.dropPrice,
@@ -243,6 +241,7 @@ class ProductUpdatePage extends React.Component {
                 }
                 else {
                     window.alert(dtProduct.msgVi || "Lỗi");
+
                     this.setState({
                         loading: false,
                         got: false
@@ -253,6 +252,9 @@ class ProductUpdatePage extends React.Component {
     }
 
     render() {
+
+        const {  sizeOptions, size } = this.state;
+
         return (
             <Management>
                 {
@@ -306,7 +308,13 @@ class ProductUpdatePage extends React.Component {
                             <div>
                                 {/* Kích cỡ  */}
                                 <Box title="Kích cở" errorText={this.state.errors && this.state.errors.size ? this.state.errors.size.msgVi : "" } margin="15px 5px">
-                                    <Input onChange={this.onSizeStateChange} value={this.state.size} type="text" placeholder="Nhập kích cở, mỗi kích cở cách nhau bởi dấu ," square/>
+                                    {/* <Input onChange={this.onSizeStateChange} value={this.state.size} type="text" placeholder="Nhập kích cở, mỗi kích cở cách nhau bởi dấu ," square/> */}
+                                    <Select 
+                                        options={sizeOptions} 
+                                        value={size}
+                                        onChange={this.onSizeStateChange}
+                                        isMulti 
+                                        />
                                 </Box>
                             </div>
                             <div>
