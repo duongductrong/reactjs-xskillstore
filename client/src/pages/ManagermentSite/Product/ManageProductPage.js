@@ -28,15 +28,15 @@ class ManageProductPage extends React.Component {
         }
 
         this.fields = [
-            {name: "Name", width: "20%"},
-            {name: "Tags", width: "10%"},
-            {name: "Price", width: "10%"},
-            {name: "Size", width: "15%"},
-            {name: "Gender", width: "5%"},
-            {name: "Vendor", width: "10%"},
-            {name: "Status", width: "10%"},
-            {name: "Created", width: "5%"},
-            {name: "Future", width: "20%"}
+            {name: "Tên sản phẩm", width: "20%"},
+            {name: "Loại", width: "10%"},
+            {name: "Giá", width: "10%"},
+            {name: "Kích thước", width: "15%"},
+            {name: "Giới tính", width: "5%"},
+            {name: "Nhà cung cấp", width: "10%"},
+            {name: "Trạng thái", width: "10%"},
+            {name: "Tạo ngày", width: "5%"},
+            {name: "Hành động", width: "20%"}
         ]
 
         this.configHeaders = {

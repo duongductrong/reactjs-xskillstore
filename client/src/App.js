@@ -1,12 +1,7 @@
 import React from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import {  } from '@fortawesome/free-solid-svg-icons'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductListPage from './pages/ProductListPage';
 import ProductPage from './pages/ProductPage';
@@ -42,83 +37,88 @@ import Logined from './components/element/Route/Logined';
 import MaintenancePage from './pages/MaintenancePage';
 import FindOrdersPage from './pages/FindOrdersPage';
 import UserAccount from './pages/UserAccount';
+import UserOrders from './pages/UserOrders';
 import { AuthProvider } from './hooks/useAuth';
 import About from './pages/About';
 
+import { ToastProvider } from 'react-toastx';
+import 'react-toastx/dist/app.css';
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      masterRoute: false
-    }
-    this.onMasterRoute = this.onMasterRoute.bind(this);
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			masterRoute: false,
+		};
+		this.onMasterRoute = this.onMasterRoute.bind(this);
+	}
 
-  onMasterRoute() {
-    const URL = window.location.pathname;
-    let result = URL.indexOf("management-site") !== -1;
-    if(result) {
-        this.setState({masterRoute: true})
-    }
-    else {
-        this.setState({masterRoute: false})
-    }
-  }
+	onMasterRoute() {
+		const URL = window.location.pathname;
+		let result = URL.indexOf('management-site') !== -1;
+		if (result) {
+			this.setState({ masterRoute: true });
+		} else {
+			this.setState({ masterRoute: false });
+		}
+	}
 
-  componentDidMount() {
-    this.onMasterRoute();
+	componentDidMount() {
+		this.onMasterRoute();
 
-    document.title = "Cửa hàng bán giày X";
-  }
+		document.title = 'Cửa hàng bán giày X';
+	}
 
-  render() {
-
-    return (
-      <AuthProvider>
-        <ProviderManagement>
-          <div className="App">
-            <Router>
-              <Switch>
-                <Route path="/" exact component={HomePage} />
-                <Route path="/about-us" exact component={About} />
-                <Route path="/product-list" component={ProductListPage} />
-                <Route path="/product/:id" component={ProductPage} />
-                <Route path="/article/:id" component={ArticlePage} />
-                <Route path="/login" component={LoginPage} />
-                <Route path="/register" component={RegisterPage} />
-                <Route path="/error404" component={Error404Page} />
-                <Route path="/maintenance" component={MaintenancePage} />
-                <Route path="/find-orders" component={FindOrdersPage} />
-                <Logined path="/payment" component={PaymentPage} />
-                <Route path="/user/my-account" component={UserAccount} />
-                <PrivateRoute path="/management-site" exact component={MainManagement} />
-                <PrivateRoute path="/management-site/systemcolor" exact component={SystemColorPage} />
-                <PrivateRoute path="/management-site/product" exact component={ManageProductPage} />
-                <PrivateRoute path="/management-site/product/create" exact component={ProductCreatePage} />
-                <PrivateRoute path="/management-site/product/edit/:id" exact component={ProductUpdatePage} />
-                <PrivateRoute path="/management-site/tag/" exact component={ManageTagPage} />
-                <PrivateRoute path="/management-site/tag/create" exact component={CreateTagPage} />
-                <PrivateRoute path="/management-site/tag/edit/:id" exact component={UpdateTagPage} />
-                <PrivateRoute path="/management-site/article" exact component={ManageArticlePage} />
-                <PrivateRoute path="/management-site/article/create" exact component={CreateArticlePage} />
-                <PrivateRoute path="/management-site/article/edit/:id" exact component={UpdateArticlePage} />
-                <PrivateRoute path="/management-site/user" exact component={ManageUserPage} />
-                <PrivateRoute path="/management-site/user/create" exact component={CreateUserPage} />
-                <PrivateRoute path="/management-site/user/resetpass/:id" exact component={ResetPassUserPage} />
-                <PrivateRoute path="/management-site/user/edit/:id" exact component={UpdateUserPage} />
-                <PrivateRoute path="/management-site/promotion" exact component={ManagePromotionPage} />
-                <PrivateRoute path="/management-site/promotion/create" exact component={CreatePromotionPage} />
-                <PrivateRoute path="/management-site/promotion/edit/:id" exact component={UpdatePromotionPage} />
-                <PrivateRoute path="/management-site/purchased/" exact component={ManagePurchasedPage} />
-                <PrivateRoute path="/management-site/purchased/detail/:id" exact component={DetailPurchasedPage} />
-                <Route path="*" component={Error404Page} />
-              </Switch>
-            </Router>
-          </div>
-        </ProviderManagement>
-      </AuthProvider>
-    );
-  }
+	render() {
+		return (
+			<ToastProvider>
+				<AuthProvider>
+					<ProviderManagement>
+						<div className='App'>
+							<Router>
+								<Switch>
+									<Route path='/' exact component={HomePage} />
+									<Route path='/about-us' exact component={About} />
+									<Route path='/product-list' component={ProductListPage} />
+									<Route path='/product/:id' component={ProductPage} />
+									<Route path='/article/:id' component={ArticlePage} />
+									<Route path='/login' component={LoginPage} />
+									<Route path='/register' component={RegisterPage} />
+									<Route path='/error404' component={Error404Page} />
+									<Route path='/maintenance' component={MaintenancePage} />
+									<Route path='/find-orders' component={FindOrdersPage} />
+									<Logined path='/payment' component={PaymentPage} />
+									<PrivateRoute path='/user/my-account' exact component={UserAccount} />
+									<PrivateRoute path='/user/my-orders' exact component={UserOrders} />
+									<PrivateRoute path='/management-site' exact component={MainManagement} />
+									<PrivateRoute path='/management-site/systemcolor' exact component={SystemColorPage} />
+									<PrivateRoute path='/management-site/product' exact component={ManageProductPage} />
+									<PrivateRoute path='/management-site/product/create' exact component={ProductCreatePage} />
+									<PrivateRoute path='/management-site/product/edit/:id' exact component={ProductUpdatePage} />
+									<PrivateRoute path='/management-site/tag/' exact component={ManageTagPage} />
+									<PrivateRoute path='/management-site/tag/create' exact component={CreateTagPage} />
+									<PrivateRoute path='/management-site/tag/edit/:id' exact component={UpdateTagPage} />
+									<PrivateRoute path='/management-site/article' exact component={ManageArticlePage} />
+									<PrivateRoute path='/management-site/article/create' exact component={CreateArticlePage} />
+									<PrivateRoute path='/management-site/article/edit/:id' exact component={UpdateArticlePage} />
+									<PrivateRoute path='/management-site/user' exact component={ManageUserPage} />
+									<PrivateRoute path='/management-site/user/create' exact component={CreateUserPage} />
+									<PrivateRoute path='/management-site/user/resetpass/:id' exact component={ResetPassUserPage} />
+									<PrivateRoute path='/management-site/user/edit/:id' exact component={UpdateUserPage} />
+									<PrivateRoute path='/management-site/promotion' exact component={ManagePromotionPage} />
+									<PrivateRoute path='/management-site/promotion/create' exact component={CreatePromotionPage} />
+									<PrivateRoute path='/management-site/promotion/edit/:id' exact component={UpdatePromotionPage} />
+									<PrivateRoute path='/management-site/purchased/' exact component={ManagePurchasedPage} />
+									<PrivateRoute path='/management-site/purchased/detail/:id' exact component={DetailPurchasedPage} />
+									<Route path='*' component={Error404Page} />
+								</Switch>
+							</Router>
+						</div>
+					</ProviderManagement>
+				</AuthProvider>
+			</ToastProvider>
+		);
+	}
 }
 
 export default App;

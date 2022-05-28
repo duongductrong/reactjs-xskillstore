@@ -13,7 +13,7 @@ import Store from '../components/layout/Common/Store';
 import Axios from 'axios';
 import MaintenanceIMG from '../images/maintenance-1.jpg';
 import ThumbnailIMG from '../images/thumbnail.png';
-import SaleIMG from '../images/sale.jpg';
+import SaleIMG from '../images/Menu_Sale-off.jpg';
 import BannerIMG from '../images/banner.jpg';
 import LoadingStore from '../components/element/Loading/LoadingStore';
 
@@ -26,43 +26,22 @@ function HomePageCategory(props) {
 				url={`/product-list?gender=${0}`}
 				title='GIÀY NAM'
 				image='https://ananas.vn/wp-content/uploads/catalogy-1.jpg'
-				// image={ThumbnailIMG}
-				// categories={[
-				//     {url: "/", name: "New Arrivals"},
-				//     {url: "/", name: "Best Seller"},
-				//     {url: "/", name: "Sale Off"},
-				// ]}
 			/>
 			<CardInSideText
 				style={{ height: '250px' }}
 				url={`/product-list`}
 				title='Danh Mục'
 				image='https://ananas.vn/wp-content/uploads/banner-phu%CC%A3_2m-600x320.jpg'
-				// image={ThumbnailIMG}
-				// categories={[
-				//     {url: "/", name: "Basas"},
-				//     {url: "/", name: "Vintas"},
-				//     {url: "/", name: "Urbas"},
-				//     {url: "/", name: "Pattas"}
-				// ]}
 			/>
 			<CardInSideText
 				style={{ height: '250px' }}
 				url={`/product-list?gender=${1}`}
 				title='GIÀY Nữ'
 				image='https://ananas.vn/wp-content/uploads/catalogy-2.jpg'
-				// image={ThumbnailIMG}
-				// categories={[
-				//     {url: "/", name: "New Arrivals"},
-				//     {url: "/", name: "Best Seller"},
-				//     {url: "/", name: "Sale Off"},
-				// ]}
 			/>
 		</Portfolio>
 	);
 }
-
-function HomepagePortfolioProduct(props) {}
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -169,21 +148,18 @@ class HomePage extends React.Component {
 							<div>
 								<Carousel style={{ height: '300px' }} content={this.banner_carousel} auto={false} detail />
 							</div>
-							<Banner
-								title='Ưu đãi lớn - Xem Ngay'
-								para="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-								image={SaleIMG}
-								url={'/maintenance'}
-							/>
+							<Banner title='Ưu đãi lớn - Xem Ngay' image={SaleIMG} url={'/maintenance'} />
 						</div>
+
 						<HomePageCategory title='Danh mục mua hàng' shows={this.state.HomePageCategory_shows} />
+
 						<PortfolioSlide
 							title='sản phẩm mới nhất'
 							shows={this.state.PortfolioSlide_shows}
 							products={this.state.products}
 						/>
 					</Layout_md>
-					<Poster image={BannerIMG} url='/banner' />
+					<Poster image={BannerIMG} url='/' />
 					<Layout_md>
 						<div className='homepage__detail'>
 							<div className='homepage__detail__ins'>

@@ -16,6 +16,8 @@ import PaginationCustom from '../components/element/Pagination/PaginationCustom'
 import Alert from '../components/element/Alert/Alert';
 import LoadingStore from '../components/element/Loading/LoadingStore';
 import BannerProductListIMG from '../images/banner-productlist.png';
+import { withRouter } from 'react-router-dom';
+import queryString from 'query-string';
 
 class ProductListPage extends React.Component {
 	constructor(props) {
@@ -190,9 +192,7 @@ class ProductListPage extends React.Component {
 			if (special === 'gender') {
 				if (typeof gender === 'string') {
 					let temp = gender.split(',').map((e) => Number(e));
-					if ((temp[0] === 0 || temp[0] === 1) && (temp[1] === 0 || temp[1] === 1)) {
-						conditions.gender = gender;
-					}
+					conditions.gender = temp;
 				} else if (typeof gender === 'number' && Number(gender) !== 'NaN') {
 					if (gender === 0) {
 						conditions.gender = [gender];
@@ -232,6 +232,7 @@ class ProductListPage extends React.Component {
 			} else {
 				conditions.status = filter.status;
 			}
+
 			this.setState(
 				{
 					filter: conditions,
@@ -330,6 +331,16 @@ class ProductListPage extends React.Component {
 					this.setState({ loading: false });
 				});
 		});
+	}
+
+	componentDidUpdate(prevProps, nextState) {
+		if (this.props.location !== prevProps.location) {
+			const _location = queryString.parse(prevProps.location.search);
+			const _gender = _location.gender ? [Number(_location.gender) !== NaN ? Number(_location.gender) : [...1, 2]] : [0, 1];
+			const { min_price, max_price, gender, size, status } = nextState.filter;
+			
+			this.onFilters(min_price, max_price, _gender.join(","), size, status, 'gender')();
+		}
 	}
 
 	render() {
@@ -494,4 +505,4 @@ class ProductListPage extends React.Component {
 	}
 }
 
-export default ProductListPage;
+export default withRouter(ProductListPage);

@@ -17,7 +17,7 @@ class Management extends React.Component {
 
         this.managementSide = {
             production: {
-                titleDropdown: "Production",
+                titleDropdown: "Sản phẩm",
                 titleContent: "Chi tiết sản phẩm",
                 icon: faArchive,
                 content: [
@@ -33,7 +33,7 @@ class Management extends React.Component {
                 ]
             },
             tag: {
-                titleDropdown: "Tag",
+                titleDropdown: "Thẻ",
                 titleContent: "Chi tiết thể loại",
                 icon: faTags,
                 content: [
@@ -48,7 +48,7 @@ class Management extends React.Component {
                 ]
             },
             promotion: {
-                titleDropdown: "Promotion",
+                titleDropdown: "Khuyến mãi",
                 titleContent: "Chi tiết khuyến mãi",
                 icon: faPercentage,
                 content: [
@@ -64,7 +64,7 @@ class Management extends React.Component {
                 ]
             },
             article: {
-                titleDropdown: "Article",
+                titleDropdown: "Bài viết",
                 titleContent: "Chi tiết bài viết",
                 icon: faNewspaper,
                 content: [
@@ -80,7 +80,7 @@ class Management extends React.Component {
                 ]
             },
             purchased: {
-                titleDropdown: "Purchased",
+                titleDropdown: "Đơn hàng",
                 titleContent: "Chi tiết đơn hàng",
                 icon: faWallet,
                 content: [
@@ -92,7 +92,7 @@ class Management extends React.Component {
                 ]
             },
             user: {
-                titleDropdown: "Users",
+                titleDropdown: "Người dùng",
                 titleContent: "Chi tiết người dùng",
                 icon: faUsers,
                 content: [
@@ -128,7 +128,7 @@ class Management extends React.Component {
                     <h2 className="management__side__logo management--center">SB Ananas</h2>
                     <Nav path={`/`} icon={ faSignOutAlt } title="Store" />
                     <Seperate style={{borderColor: "rgba(255,255,255,.4)", borderWidth: "0.5px", margin: "15px 0"}} />
-                    <Nav path={`/management-site`} icon={faTachometerAlt} title="Dashboard" />
+                    <Nav path={`/management-site`} icon={faTachometerAlt} title="Bảng điều khiển" />
                     <Seperate style={{borderColor: "rgba(255,255,255,.4)", borderWidth: "0.5px", margin: "15px 0"}} />
                     <BoxDropdown title="Interface">
                         <Dropdown 

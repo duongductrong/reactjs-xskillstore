@@ -106,7 +106,7 @@ class LoginPage extends React.Component {
           <form onSubmit={this.onSubmit} className="formPattern-one__box__form">
             <h1 className="formPattern-one__box__form__title">
               {" "}
-              WELCOME BACK !{" "}
+              Chào mừng bạn trở lại{" "}
             </h1>
             {this.state.error.status && (
               <ErrorText> {this.state.error.content} </ErrorText>

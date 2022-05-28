@@ -126,7 +126,7 @@ class RegisterPage extends React.Component {
                         </ul>
                     </div>
                     <form onSubmit={this.onRegister} className="formPattern-one__box__form">
-                        <h1 className="formPattern-one__box__title">Register Account !</h1>
+                        <h1 className="formPattern-one__box__title">Đăng ký tài khoản !</h1>
                         {
                             status && !Object.values(errors).find(err => err === true) ? 
                             <SuccessText>Đăng ký thành công, bấm <NavLink to="/login">Đăng nhập</NavLink> để tiếp tục mua hàng</SuccessText> :

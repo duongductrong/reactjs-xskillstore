@@ -8,7 +8,7 @@ class HomeManagement extends React.Component {
         return (
             <Management>
                 <div className="home-management">
-                    <h1>Dashboard</h1>
+                    <h1>Bảng điều khiển</h1>
                     <Box title="Table Colors">
                         <div style={{
                             display: "grid", 

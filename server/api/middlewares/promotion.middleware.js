@@ -102,10 +102,10 @@ module.exports.checkCreate = async (req, res, next) => {
         errors.expiry_date = Notification.message("Ngày hết hạn không được để trống", "error", 404);
     }
     else {
-        let dateSubmit = Application.splitDate(expiry_date);
-        if(dateSubmit.year < dateNow.year || (dateSubmit.year >= dateNow.year && dateSubmit.mouth < dateNow.mouth) || (dateSubmit.year >= dateNow.year && dateSubmit.mouth >= dateNow.mouth && dateSubmit.day < dateNow.day + 1)) {
-            errors.expiry_date = Notification.message("Ngày hết hạn không được nhỏ hơn ngày hiện tại", "error", 400);   
-        }
+        // let dateSubmit = Application.splitDate(expiry_date);
+        // if(dateSubmit.year < dateNow.year || (dateSubmit.year >= dateNow.year && dateSubmit.mouth < dateNow.mouth) || (dateSubmit.year >= dateNow.year && dateSubmit.mouth >= dateNow.mouth && dateSubmit.day < dateNow.day + 1)) {
+        //     errors.expiry_date = Notification.message("Ngày hết hạn không được nhỏ hơn ngày hiện tại", "error", 400);   
+        // }
     }
 
     if(Checking.testError(errors)) {
@@ -165,10 +165,10 @@ module.exports.checkPut = async (req, res, next) => {
         errors.expiry_date = Notification.message("Ngày hết hạn không được để trống", "error", 404);
     }
     else {
-        let dateSubmit = Application.splitDate(expiry_date);
-        if(dateSubmit.year < dateNow.year || (dateSubmit.year >= dateNow.year && dateSubmit.mouth < dateNow.mouth) || (dateSubmit.year >= dateNow.year && dateSubmit.mouth >= dateNow.mouth && dateSubmit.day < dateNow.day + 1)) {
-            errors.expiry_date = Notification.message("Ngày hết hạn không được nhỏ hơn ngày hiện tại", "error", 400);   
-        }
+        // let dateSubmit = Application.splitDate(expiry_date);
+        // if(dateSubmit.year < dateNow.year || (dateSubmit.year >= dateNow.year && dateSubmit.mouth < dateNow.mouth) || (dateSubmit.year >= dateNow.year && dateSubmit.mouth >= dateNow.mouth && dateSubmit.day < dateNow.day + 1)) {
+        //     errors.expiry_date = Notification.message("Ngày hết hạn không được nhỏ hơn ngày hiện tại", "error", 400);   
+        // }
     }
 
     if(!Checking.isNull(status) && typeof status !== "boolean") {

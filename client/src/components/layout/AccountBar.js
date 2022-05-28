@@ -16,7 +16,7 @@ function AccountBar() {
     <div className="account-bar">
       <ul class="account-bar__options">
         <li class="account-bar__options__element">
-          <NavLink to={"/"}>
+          <NavLink to={"/user/my-orders"}>
             <svg
               aria-hidden="true"
               focusable="false"

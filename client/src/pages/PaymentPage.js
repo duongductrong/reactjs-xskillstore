@@ -15,6 +15,7 @@ import InputGroup from '../components/element/Form/InputGroup';
 import ErrorText from '../components/element/Text/ErrorText';
 import Module from '../modules/Module';
 import LoadingStore from '../components/element/Loading/LoadingStore';
+import moment from 'moment';
 
 class PaymentPage extends React.Component {
     constructor(props) {
@@ -61,6 +62,20 @@ class PaymentPage extends React.Component {
                 }
                 else {
                     const { promotion } = data;
+                    const {expiry_date} = promotion;
+
+                    if(moment() > moment(new Date(expiry_date))) {
+                        this.setState({
+                            errors: {
+                                ...this.state.errors,
+                                promotion: "Mã đang sử dụng đã hết hạn",
+                            },
+                            coupon: "",
+                            loading: false
+                        });
+                        return;
+                    }
+
                     this.setState({
                         coupon: promotion,
                         loading: false
@@ -125,7 +140,7 @@ class PaymentPage extends React.Component {
                                             <div className="payment-page__order__coupon">
                                                 <small style={{display: "block"}}> Mã khuyến mãi của bạn là gì ? </small>
                                                 { errors.promotion && <ErrorText> {errors.promotion} </ErrorText> }
-                                                <Input onChange={this.onPromotionStateChange} value={this.state.promotion} type="search" placeholder="Nhập mã khuyến mãi" square/>
+                                                <Input onChange={this.onPromotionStateChange} value={this.state.promotion} type="text" placeholder="Nhập mã khuyến mãi" square/>
                                                 <Button onClick={this.onCheckPromotion} type="button" onChange={this.onCheckPromotion}>ÁP DỤNG</Button>
                                             </div>
                                             <Seperate dashed/>

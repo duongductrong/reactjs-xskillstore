@@ -47,4 +47,8 @@
 	&--square {
 		border-radius: 5px;
 	}
+
+	&:disabled {
+		background-color: rgba($color: #000000, $alpha: 0.08);
+	}
 }

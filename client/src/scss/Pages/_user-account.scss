@@ -24,4 +24,17 @@
     flex: 1 0 calc(50% - 15px);
     padding: 0 7.5px;
   }
+
+  & > .col-full {
+    flex: 1 0 100%;
+    padding: 0 7.5px;
+  }
+
+  & > .mb-base {
+    margin-bottom: 1rem;
+  }
+
+  .user-account--error {
+    color: red;
+  }
 }
