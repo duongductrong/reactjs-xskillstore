@@ -1,9 +1,11 @@
 import React from 'react';
 import Axios from 'axios';
+import queryString from 'query-string';
 
 function useHttpRequest() {
 	const axiosInstance = Axios.create({
 		baseURL: `${process.env.REACT_APP_API_ENDPOINT}/api/`,
+		paramsSerializer: (params) => queryString.stringify(params),
 	});
 
 	axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${window.localStorage.getItem('access_token')}`;

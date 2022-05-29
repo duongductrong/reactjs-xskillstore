@@ -1,3 +1,4 @@
+const { default: Axios } = require('axios');
 const PURCHASED_MODEL = require('../models/purchased.model');
 const Notification = require('../modules/Notification');
 
@@ -40,6 +41,17 @@ module.exports.create = (req, res) => {
 	PURCHASED_MODEL.create(purchased)
 		.then((result) => {
 			if (result) {
+				// Create orders_placed in statistical
+				Axios.put(
+					`${process.env.SERVER_URL}/statistical/tracking`,
+					{ orders_placed: result },
+					{
+						headers: {
+							Authorization: req.headers.authorization,
+						},
+					}
+				);
+
 				res.json(Notification.message('Gửi đơn hàng thành công', 'ok', 200, { purchased: result }));
 			}
 		})
@@ -47,9 +59,10 @@ module.exports.create = (req, res) => {
 			res.json(Notification.message('Gửi đơn hàng thất bại, vui lòng kiểm tra lại', 'error', 400));
 		});
 };
+
 module.exports.put = (req, res) => {
-	const { purchased, id } = res.locals; //Accept
-	PURCHASED_MODEL.updateOne({ _id: id }, { $set: purchased }, (err, result) => {
+	const { purchased, id } = res.locals; // Accept
+	PURCHASED_MODEL.updateOne({ _id: id }, { $set: purchased }, async (err, result) => {
 		if (err) {
 			res.json(Notification.message('Cập nhật không thành công, hãy kiểm tra lại', 'error', 400));
 			return;
@@ -57,6 +70,15 @@ module.exports.put = (req, res) => {
 
 		if (result.n >= 1) {
 			if (result.nModified !== 0) {
+				const getPurchased = await PURCHASED_MODEL.findOne({ _id: id });
+				const _data = { [purchased.verify ? 'sold_orders' : 'cancel_orders']: getPurchased };
+
+				Axios.put(`${process.env.SERVER_URL}/statistical/tracking`, _data, {
+					headers: {
+						Authorization: req.headers.authorization,
+					},
+				});
+
 				res.json(Notification.message('Cập nhật đơn hàng thành công', 'ok', 200));
 			} else {
 				res.json(Notification.message('Đã cập nhật nhưng không có gì thay đổi', 'ok', 200));
