@@ -25,10 +25,10 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: "true"
     ports:
-      - 8080:8000
+      - 8080:8080
     command: npm start
-    volumes:
-      - $PWD:/var/www/server
+    # volumes:
+    #   - $PWD:/var/www/server
     networks:
       - bride
     depends_on:
@@ -44,8 +44,8 @@ services:
     ports:
       - 3000:3000
     command: npm start
-    volumes:
-      - $PWD:/var/www/html
+    # volumes:
+    #   - $PWD:/var/www/html
     networks:
       - bride
     depends_on:
